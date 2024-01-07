@@ -39,6 +39,11 @@ This template comes with the following features:
 - `jest:watch` – starts jest watch
 - `test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
 
+### Database scripts
+
+- `migrate` - pushes the changes in the schema to the database
+- `studio` - runs prisma studio
+
 ### Other scripts
 
 - `storybook` – starts storybook dev server
