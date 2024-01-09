@@ -38,3 +38,14 @@ export async function updateTodo(id: string, isCompleted: boolean) {
     return { error };
   }
 }
+
+export async function deleteTodo(id: string) {
+  try {
+    const todo = await prisma.todo.delete({
+      where: { id },
+    });
+    return { todo };
+  } catch (error) {
+    return { error };
+  }
+}

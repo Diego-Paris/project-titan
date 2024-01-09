@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Checkbox, Text, Group, Paper, Box, useMantineTheme } from '@mantine/core';
+import { Checkbox, Text, Group, Paper, Box, useMantineTheme, ActionIcon } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IconCheck, IconX } from '@tabler/icons-react';
+import { IconCheck, IconX, IconTrash } from '@tabler/icons-react';
 import { Todo } from '@prisma/client';
-import { updateTodoAction } from '@/app/_actions';
+import { updateTodoAction, deleteTodoAction } from '@/app/_actions'; // Import your API actions
 
 type TodoItemProps = {
   todo: Todo;
+  //onDelete: () => void; // Callback for updating the parent component
 };
 
 const TodoItem = ({ todo }: TodoItemProps) => {
@@ -58,6 +59,45 @@ const TodoItem = ({ todo }: TodoItemProps) => {
     }
   };
 
+  const handleDelete = async () => {
+    const notificationId = `todo-delete-${todo.id}`;
+
+    // Show deleting notification
+    notifications.show({
+      id: notificationId,
+      loading: true,
+      title: 'Deleting Todo',
+      message: 'Please wait...',
+      autoClose: false,
+      withCloseButton: false,
+    });
+
+    try {
+      // Function to call API for deletion
+      await deleteTodoAction(todo.id);
+      notifications.update({
+        id: notificationId,
+        color: 'teal',
+        title: 'Todo Deleted',
+        message: 'Todo has been successfully deleted.',
+        icon: <IconCheck size={theme.fontSizes.md} />,
+        loading: false,
+        autoClose: 2000,
+      });
+    } catch (err) {
+      // Update with error message
+      notifications.update({
+        id: notificationId,
+        color: 'red',
+        title: 'Error',
+        message: 'Failed to delete todo. Please try again.',
+        icon: <IconX size={theme.fontSizes.md} />,
+        loading: false,
+        autoClose: 2000,
+      });
+    }
+  };
+
   return (
     <Paper withBorder shadow="xs" p="sm" radius="md" my="xs">
       <Group wrap="nowrap">
@@ -84,6 +124,14 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         <Text size="sm" c="dimmed">
           {todo.updatedAt.toUTCString()}
         </Text>
+        <ActionIcon
+          onClick={handleDelete}
+          variant="transparent"
+          size="lg" // Adjust the size as needed
+          color="red" // This sets the icon color
+        >
+          <IconTrash size={theme.fontSizes.sm} />
+        </ActionIcon>
       </Group>
     </Paper>
   );
