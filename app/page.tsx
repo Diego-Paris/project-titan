@@ -1,3 +1,5 @@
+import { Container, Title, Paper, Space, List } from '@mantine/core';
+
 import { Welcome } from '../components/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { getTodos } from '@/lib/todos';
@@ -16,20 +18,21 @@ export default async function HomePage() {
     <>
       <Welcome />
       <ColorSchemeToggle />
-      <section className="py-20">
-        <div className="container">
-          <h1 className="mb-10 w-fit bg-slate-100 px-2 text-3xl font-bold text-slate-800">Todos</h1>
-
-          <NewTodoForm />
-
-          <h2 className="mt-10 border-b pb-2 text-xl font-semibold">Previous todos:</h2>
-          <ul className="mt-4 flex flex-col gap-1">
+      <Space h="xl" /> {/* Adds vertical space */}
+      <Container>
+        <Title order={1}>Todos</Title> {/* Title equivalent to h1 */}
+        <Space h="md" />
+        <NewTodoForm />
+        <Title order={2}>Previous todos:</Title> {/* Title equivalent to h2 */}
+        <Space h="sm" />
+        <Paper withBorder p="md" shadow="sm">
+          <List>
             {sortedTodos.map((todo) => (
               <TodoItem key={todo.id} todo={todo} />
             ))}
-          </ul>
-        </div>
-      </section>
+          </List>
+        </Paper>
+      </Container>
     </>
   );
 }

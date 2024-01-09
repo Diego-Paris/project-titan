@@ -19,11 +19,13 @@
     "storybook:build": "storybook build",
     "migrate": "npx prisma db push",
     "studio": "npx prisma studio",
+    "gen": "npx prisma generate",
     "postinstall": "prisma generate"
   },
   "dependencies": {
     "@mantine/core": "7.4.0",
     "@mantine/hooks": "7.4.0",
+    "@mantine/notifications": "^7.4.1",
     "@next/bundle-analyzer": "^14.0.1",
     "@prisma/client": "^5.7.1",
     "@tabler/icons-react": "^2.40.0",

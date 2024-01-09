@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import { Button, TextInput, Group, Title, Box } from '@mantine/core';
 import { createTodoAction } from '@/app/_actions';
 
 const NewTodoForm = () => {
@@ -15,16 +16,17 @@ const NewTodoForm = () => {
   }
 
   return (
-    <form ref={formRef} action={action}>
-      <h2 className="mb-2 font-medium">Create a New Todo</h2>
-      <input type="text" name="title" className="rounded border border-slate-400 px-2 py-0.5" />
-      <button
-        type="submit"
-        className="ml-2 rounded bg-slate-700 px-2 py-1 text-sm text-white disabled:bg-opacity-50"
-      >
-        Add Todo
-      </button>
-    </form>
+    <Box component="form" ref={formRef} onSubmit={(e) => e.preventDefault()}>
+      <Title order={3} mb="xs">
+        Create a New Todo
+      </Title>
+      <Group>
+        <TextInput name="title" placeholder="Todo title" required />
+        <Button type="submit" onClick={() => formRef.current && action(new FormData(formRef.current))}>
+          Add Todo
+        </Button>
+      </Group>
+    </Box>
   );
 };
 
