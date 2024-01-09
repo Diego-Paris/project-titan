@@ -1,7 +1,7 @@
 'use client';
 
 import { useTransition } from 'react';
-
+import { Checkbox, Text, Group, Paper, Box } from '@mantine/core';
 import { Todo } from '@prisma/client';
 import { updateTodoAction } from '@/app/_actions';
 
@@ -13,24 +13,35 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <li className="flex items-center gap-3">
-      <input
-        id={todo.id}
-        type="checkbox"
-        defaultChecked={todo.isCompleted}
-        onChange={(e) => startTransition(() => updateTodoAction(todo.id, e.target.checked))}
-        className="peer h-4 w-4 cursor-pointer rounded border-gray-300 text-slate-600 focus:ring-slate-600"
-      />
-      <label
-        htmlFor={todo.id}
-        className="cursor-pointer peer-checked:text-slate-500 peer-checked:line-through"
-      >
-        {todo.title}
-      </label>
-      <span className="ml-auto text-sm text-slate-500 peer-checked:line-through">
-        {todo.updatedAt.toUTCString()}
-      </span>
-    </li>
+    <Paper withBorder shadow="xs" p="sm" radius="md" my="xs">
+      <Group wrap="nowrap">
+        <Checkbox
+          id={todo.id}
+          checked={todo.isCompleted}
+          onChange={(e) => startTransition(() => updateTodoAction(todo.id, e.target.checked))}
+          size="md"
+        />
+
+        <Box flex={1}>
+          <Text
+            component="label"
+            htmlFor={todo.id}
+            size="md"
+            lineClamp={1}
+            style={{
+              textDecoration: todo.isCompleted ? 'line-through' : 'none',
+              color: todo.isCompleted ? '#718096' : 'inherit', // slate-500
+            }}
+          >
+            {todo.title}
+          </Text>
+        </Box>
+
+        <Text size="sm" color="dimmed">
+          {todo.updatedAt.toUTCString()}
+        </Text>
+      </Group>
+    </Paper>
   );
 };
 
