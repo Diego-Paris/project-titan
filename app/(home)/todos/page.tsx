@@ -1,29 +1,48 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { Container, Title, Paper, Space, List } from '@mantine/core';
 
+import { Todo } from '@prisma/client';
 import { Welcome } from '@/components/Welcome/Welcome';
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
 import TodoItem from '@/components/TodoItem/TodoItem';
 import NewTodoForm from '@/components/NewTodoForm/NewTodoForm';
 import { getTodosAction } from '@/app/_actions';
 
-export default async function HomePage() {
-  const { todos } = await getTodosAction();
+export default function HomePage() {
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  // Assuming todos have a 'createdAt' or 'updatedAt' field
-  const sortedTodos = todos
-    ? todos.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
-    : [];
+  const fetchTodos = async () => {
+    try {
+      const response = await getTodosAction();
+      setTodos(response.todos || []);
+    } catch (error) {
+      console.error('Failed to load todos', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodos(); // Fetch immediately on component mount
+    const interval = setInterval(fetchTodos, 5000); // Fetch every 2 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
+  const sortedTodos = todos.sort(
+    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+  );
 
   return (
     <>
       <Welcome />
       <ColorSchemeToggle />
-      <Space h="xl" /> {/* Adds vertical space */}
+      <Space h="xl" />
       <Container>
-        <Title order={1}>Todos</Title> {/* Title equivalent to h1 */}
+        <Title order={1}>Todos</Title>
         <Space h="md" />
         <NewTodoForm />
-        <Title order={2}>Previous todos:</Title> {/* Title equivalent to h2 */}
+        <Title order={2}>Previous todos:</Title>
         <Space h="sm" />
         <Paper withBorder p="md" shadow="sm">
           <List>
