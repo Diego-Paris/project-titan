@@ -4,8 +4,9 @@ import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
 import { createTodo, deleteTodo, getTodos, updateTodo } from '@/lib/todos';
 
 export async function getTodosAction() {
-  //revalidatePath('/');
-  noStore();
+  //revalidatePath('/'); // does not work for gets,
+  // but works for posts, puts, and deletes
+  noStore(); // required for gets apparently...
   const { todos } = await getTodos();
   return { todos };
 }
