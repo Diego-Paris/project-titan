@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { createTodo, deleteTodo, getTodos, updateTodo } from '@/lib/todos';
 
+export const revalidate = 0;
 export async function getTodosAction() {
   const { todos } = await getTodos();
   revalidatePath('/');
