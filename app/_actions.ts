@@ -4,9 +4,9 @@ import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
 import { createTodo, deleteTodo, getTodos, updateTodo } from '@/lib/todos';
 
 export async function getTodosAction() {
-  noStore();
-  const { todos } = await getTodos();
   revalidatePath('/');
+  //noStore();
+  const { todos } = await getTodos();
   return { todos };
 }
 
