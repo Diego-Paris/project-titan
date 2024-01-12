@@ -24,7 +24,7 @@ export default function HomePage() {
 
   useEffect(() => {
     fetchTodos(); // Fetch immediately on component mount
-    const interval = setInterval(fetchTodos, 5000); // Fetch every 2 seconds
+    const interval = setInterval(fetchTodos, 2000); // Fetch every 2 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
