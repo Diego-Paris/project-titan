@@ -2,12 +2,12 @@ import { Container, Title, Paper, Space, List } from '@mantine/core';
 
 import { Welcome } from '@/components/Welcome/Welcome';
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
-import { getTodos } from '@/lib/todos';
 import TodoItem from '@/components/TodoItem/TodoItem';
 import NewTodoForm from '@/components/NewTodoForm/NewTodoForm';
+import { getTodosAction } from '@/app/_actions';
 
 export default async function HomePage() {
-  const { todos } = await getTodos();
+  const { todos } = await getTodosAction();
 
   // Assuming todos have a 'createdAt' or 'updatedAt' field
   const sortedTodos = todos

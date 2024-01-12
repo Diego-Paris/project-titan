@@ -1,7 +1,13 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { createTodo, deleteTodo, updateTodo } from '@/lib/todos';
+import { createTodo, deleteTodo, getTodos, updateTodo } from '@/lib/todos';
+
+export async function getTodosAction() {
+  const { todos } = await getTodos();
+  revalidatePath('/');
+  return { todos };
+}
 
 export async function createTodoAction(title: string) {
   await createTodo(title);
