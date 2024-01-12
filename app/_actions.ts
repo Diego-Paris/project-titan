@@ -1,10 +1,10 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
 import { createTodo, deleteTodo, getTodos, updateTodo } from '@/lib/todos';
 
-export const revalidate = 0;
 export async function getTodosAction() {
+  noStore();
   const { todos } = await getTodos();
   revalidatePath('/');
   return { todos };
