@@ -35,7 +35,7 @@ export const NullsOrderSchema = z.enum(['first','last']);
 
 export const TodoSchema = z.object({
   id: z.string().uuid(),
-  title: z.string(),
+  title: z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),
   isCompleted: z.boolean(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
@@ -241,7 +241,7 @@ export const TodoWhereUniqueInputSchema: z.ZodType<Prisma.TodoWhereUniqueInput> 
   AND: z.union([ z.lazy(() => TodoWhereInputSchema),z.lazy(() => TodoWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => TodoWhereInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => TodoWhereInputSchema),z.lazy(() => TodoWhereInputSchema).array() ]).optional(),
-  title: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  title: z.union([ z.lazy(() => StringFilterSchema),z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }) ]).optional(),
   isCompleted: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
@@ -563,7 +563,7 @@ export const VerificationTokenScalarWhereWithAggregatesInputSchema: z.ZodType<Pr
 
 export const TodoCreateInputSchema: z.ZodType<Prisma.TodoCreateInput> = z.object({
   id: z.string().uuid().optional(),
-  title: z.string(),
+  title: z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),
   isCompleted: z.boolean().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional()
@@ -571,7 +571,7 @@ export const TodoCreateInputSchema: z.ZodType<Prisma.TodoCreateInput> = z.object
 
 export const TodoUncheckedCreateInputSchema: z.ZodType<Prisma.TodoUncheckedCreateInput> = z.object({
   id: z.string().uuid().optional(),
-  title: z.string(),
+  title: z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),
   isCompleted: z.boolean().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional()
@@ -579,7 +579,7 @@ export const TodoUncheckedCreateInputSchema: z.ZodType<Prisma.TodoUncheckedCreat
 
 export const TodoUpdateInputSchema: z.ZodType<Prisma.TodoUpdateInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  title: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  title: z.union([ z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   isCompleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -587,7 +587,7 @@ export const TodoUpdateInputSchema: z.ZodType<Prisma.TodoUpdateInput> = z.object
 
 export const TodoUncheckedUpdateInputSchema: z.ZodType<Prisma.TodoUncheckedUpdateInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  title: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  title: z.union([ z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   isCompleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -595,7 +595,7 @@ export const TodoUncheckedUpdateInputSchema: z.ZodType<Prisma.TodoUncheckedUpdat
 
 export const TodoCreateManyInputSchema: z.ZodType<Prisma.TodoCreateManyInput> = z.object({
   id: z.string().uuid().optional(),
-  title: z.string(),
+  title: z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),
   isCompleted: z.boolean().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional()
@@ -603,7 +603,7 @@ export const TodoCreateManyInputSchema: z.ZodType<Prisma.TodoCreateManyInput> = 
 
 export const TodoUpdateManyMutationInputSchema: z.ZodType<Prisma.TodoUpdateManyMutationInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  title: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  title: z.union([ z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   isCompleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -611,7 +611,7 @@ export const TodoUpdateManyMutationInputSchema: z.ZodType<Prisma.TodoUpdateManyM
 
 export const TodoUncheckedUpdateManyInputSchema: z.ZodType<Prisma.TodoUncheckedUpdateManyInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  title: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  title: z.union([ z.string().min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" }),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   isCompleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),

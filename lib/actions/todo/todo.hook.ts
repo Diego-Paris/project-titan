@@ -15,20 +15,40 @@ export function useGetTodos() {
 }
 
 // Mutations:
-export function useCreateTodo() {
+export function useCreateTodo(onSuccessCb?: onSuccessCallback, onErrorCb?: onErrorCallback) {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (content: string) => createTodo({ title: content }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: [getTodosQueryKey] }),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: [getTodosQueryKey] });
+      if (onSuccessCb) {
+        onSuccessCb(data);
+      }
+    },
+    onError: (error) => {
+      if (onErrorCb) {
+        onErrorCb(error);
+      }
+    },
   });
 }
 
-export function useRemoveTodo() {
+export function useRemoveTodo(onSuccessCb?: onSuccessCallback, onErrorCb?: onErrorCallback) {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (todoId: string) => removeTodo(todoId),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: [getTodosQueryKey] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [getTodosQueryKey] });
+      if (onSuccessCb) {
+        onSuccessCb();
+      }
+    },
+    onError: (error) => {
+      if (onErrorCb) {
+        onErrorCb(error);
+      }
+    },
   });
 }

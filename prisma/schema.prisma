@@ -14,6 +14,7 @@ generator zod {
 
 model Todo {
   id          String      @id @default(uuid())
+  /// @zod.string.min(3, { message: "Must be at least 3 characters." }).max(10, { message: "Must be at most 10 characters" })
   title       String
   isCompleted Boolean  @default(false)
   createdAt   DateTime @default(now())
