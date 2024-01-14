@@ -3,7 +3,9 @@ import '@mantine/notifications/styles.css';
 import React from 'react';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
+
 import { theme } from '../theme';
+import { TanStackQuery } from '@/lib/providers/tanstack-query';
 
 export const metadata = {
   title: 'Titan',
@@ -24,7 +26,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <MantineProvider theme={theme}>
           <Notifications />
-          {children}
+          <TanStackQuery>{children}</TanStackQuery>
         </MantineProvider>
       </body>
     </html>
