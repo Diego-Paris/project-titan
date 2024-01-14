@@ -2,7 +2,7 @@
 
 import type { PropsWithChildren, ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { useState } from 'react';
 
@@ -18,5 +18,10 @@ export function TanStackQuery({ children }: PropsWithChildren): ReactElement {
       })
   );
 
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
 }
