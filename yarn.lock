@@ -11573,7 +11573,7 @@ __metadata:
     stylelint-config-standard-scss: "npm:^11.1.0"
     ts-jest: "npm:^29.1.1"
     typescript: "npm:5.2.2"
-    zod: "npm:^3.22.4"
+    zod: "npm:<=3.21.1"
     zod-prisma-types: "npm:^3.1.6"
   languageName: unknown
   linkType: soft
@@ -16497,9 +16497,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.22.4":
-  version: 3.22.4
-  resolution: "zod@npm:3.22.4"
-  checksum: 7578ab283dac0eee66a0ad0fc4a7f28c43e6745aadb3a529f59a4b851aa10872b3890398b3160f257f4b6817b4ce643debdda4fb21a2c040adda7862cab0a587
+"zod@npm:<=3.21.1":
+  version: 3.21.1
+  resolution: "zod@npm:3.21.1"
+  checksum: f089f1b53657fcbfea0888b5b75db2973c619006f8817707369a9332a4916ec6784c2cdb9e3cc03432c8dc815ed3f9bc05631e15829104a1bb1e6feb82f20a20
   languageName: node
   linkType: hard
