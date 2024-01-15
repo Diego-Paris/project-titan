@@ -6,7 +6,7 @@ import { notifications } from '@mantine/notifications';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { IconCheck, IconX } from '@tabler/icons-react';
-import type { Prisma, Todo } from '@prisma/client';
+import type { Prisma } from '@prisma/client';
 
 import { TodoCreateInputSchema } from '@prisma/zod';
 import { useCreateTodo } from '@/lib/actions/todo';
