@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
 import { Button, TextInput, Group, Title, Box, useMantineTheme } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { useForm } from '@mantine/form';
@@ -12,7 +11,6 @@ import { TodoCreateInputSchema } from '@prisma/zod';
 import { useCreateTodo } from '@/lib/actions/todo';
 
 const NewTodoForm = () => {
-  const formRef = useRef<HTMLFormElement>(null);
   const theme = useMantineTheme();
 
   const form = useForm({
@@ -65,7 +63,7 @@ const NewTodoForm = () => {
   };
 
   return (
-    <Box component="form" ref={formRef} onSubmit={form.onSubmit(handleSubmit)}>
+    <Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
       <Title order={3} mb="xs">
         Create a New Todo
       </Title>
