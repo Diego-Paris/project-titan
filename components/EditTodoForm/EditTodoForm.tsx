@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, TextInput, Group, Box } from '@mantine/core';
+import { Button, TextInput, Group, Box, Flex } from '@mantine/core';
 import { Prisma, Todo } from '@prisma/client';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
@@ -34,8 +34,21 @@ const EditTodoForm = ({
   return (
     <Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
       <Group>
-        <TextInput placeholder="Todo title" {...form.getInputProps('title')} />
-        <Button type="submit">Update Todo</Button>
+        <TextInput
+          placeholder="Todo title"
+          {...form.getInputProps('title')}
+          style={{ width: '100%' }}
+        />
+        <Flex
+          gap="md"
+          justify="flex-end"
+          align="flex-start"
+          direction="row"
+          wrap="wrap"
+          style={{ width: '100%' }}
+        >
+          <Button type="submit">Update Todo</Button>
+        </Flex>
       </Group>
     </Box>
   );
