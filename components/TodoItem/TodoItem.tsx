@@ -1,14 +1,27 @@
 'use client';
 
 import React from 'react';
-import { Checkbox, Text, Group, Paper, Box, useMantineTheme, ActionIcon } from '@mantine/core';
+import {
+  Checkbox,
+  Text,
+  Group,
+  Paper,
+  Box,
+  useMantineTheme,
+  ActionIcon,
+  Modal,
+} from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IconCheck, IconX, IconTrash } from '@tabler/icons-react';
+import { useDisclosure } from '@mantine/hooks';
+import { IconCheck, IconX, IconTrash, IconEdit } from '@tabler/icons-react';
 import { Todo } from '@prisma/client';
 import { useUpdateTodo, useRemoveTodo } from '@/lib/actions/todo';
+import EditTodoForm from '@/components/EditTodoForm/EditTodoForm';
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
   const theme = useMantineTheme();
+  const [opened, { open, close }] = useDisclosure(false);
+
   const updateTodoMutation = useUpdateTodo(
     // onSuccess callback
     () => {
@@ -86,12 +99,19 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
             {todo.title}
           </Text>
         </Box>
-        <Text size="sm" color="dimmed">
+        <Text size="sm" c="dimmed">
           {new Date(todo.updatedAt).toUTCString()}
         </Text>
+        <ActionIcon onClick={open} variant="transparent" size="lg" color="gray">
+          <IconEdit size={theme.fontSizes.sm} />
+        </ActionIcon>
         <ActionIcon onClick={handleDelete} variant="transparent" size="lg" color="red">
           <IconTrash size={theme.fontSizes.sm} />
         </ActionIcon>
+        <Modal opened={opened} onClose={close} title="Edit Todo" centered>
+          {/* Modal content */}
+          <EditTodoForm todo={todo} updateTodoMutation={updateTodoMutation} close={close} />
+        </Modal>
       </Group>
     </Paper>
   );
