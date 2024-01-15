@@ -2333,6 +2333,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/form@npm:^7.4.1":
+  version: 7.4.1
+  resolution: "@mantine/form@npm:7.4.1"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.3"
+    klona: "npm:^2.0.6"
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 8901e2bf681052114829cc09a1c8e7e5a75a153717a44c2932be26213af9ab461bfc7cd33ac6cadcb0b1bb95d23e1d5b4f3c471db9de9a65cce42b5cb8505bbd
+  languageName: node
+  linkType: hard
+
 "@mantine/hooks@npm:7.4.0":
   version: 7.4.0
   resolution: "@mantine/hooks@npm:7.4.0"
@@ -2642,6 +2654,15 @@ __metadata:
     "@prisma/engines-version": "npm:5.8.0-37.0a83d8541752d7582de2ebc1ece46519ce72a848"
     "@prisma/get-platform": "npm:5.8.0"
   checksum: 3c9b0cbd5d45836b60e375e9d93d98bb2278c881134eae6afc328806ec247e27a688cf2ad040007458a25629dd26fee8c86d0a7d34e1ecece0d3e7b0e43e9e81
+  languageName: node
+  linkType: hard
+
+"@prisma/generator-helper@npm:^5.5.2":
+  version: 5.8.0
+  resolution: "@prisma/generator-helper@npm:5.8.0"
+  dependencies:
+    "@prisma/debug": "npm:5.8.0"
+  checksum: da8df24cd0139a5171fb8d19d590179dc8e01f3ea9105ae2838d315be397c186f447dd79c7c3c2295cae26f67548fe86bc3d9045b110b711f7150adcdd1b58e5
   languageName: node
   linkType: hard
 
@@ -4538,6 +4559,43 @@ __metadata:
   version: 2.40.0
   resolution: "@tabler/icons@npm:2.40.0"
   checksum: a59adf9b071fb3b54f507c3a7c8adaeb74ccb5af5834c92d312829f7564f1e4255086091fe43dbfeae256510d073bce8476f2171655b337050b08b7521786400
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:5.17.10":
+  version: 5.17.10
+  resolution: "@tanstack/query-core@npm:5.17.10"
+  checksum: 56db2d877fd8798ab401e9b6689dcb77c58f9474ecd613de0db477c91049245561b84f74af6272bdf8208ee8455cbeb94a2e97a4c94c06879b6b6987fd538a76
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-devtools@npm:5.17.7":
+  version: 5.17.7
+  resolution: "@tanstack/query-devtools@npm:5.17.7"
+  checksum: 96bb17aec640e23150154e9f7eb7b841a5931bb748a86fe06946b307ab3832a94cbf065f1d394d26c576ab620d4f9e59f9518947acf569a7a42b83fd2421b209
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^5.17.10":
+  version: 5.17.10
+  resolution: "@tanstack/react-query-devtools@npm:5.17.10"
+  dependencies:
+    "@tanstack/query-devtools": "npm:5.17.7"
+  peerDependencies:
+    "@tanstack/react-query": ^5.17.10
+    react: ^18.0.0
+  checksum: e7d3110be928ba9d569add5fbcdaa8c76190329cd7898ee4a7974bf16c09cb637d07b73a3a02b1658cb2bf9124e10afacdc723d69f5bbb49ad3318468c30b043
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.17.10":
+  version: 5.17.10
+  resolution: "@tanstack/react-query@npm:5.17.10"
+  dependencies:
+    "@tanstack/query-core": "npm:5.17.10"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 9c99517251203b885ad625ab7de67874f276de698eeb2de19f07012747998021edb43069e68b1a996c8072ec9af0f81c31194c57a9af8df2fd237ffc040dd49d
   languageName: node
   linkType: hard
 
@@ -6874,6 +6932,13 @@ __metadata:
   version: 4.6.0
   resolution: "co@npm:4.6.0"
   checksum: c0e85ea0ca8bf0a50cbdca82efc5af0301240ca88ebe3644a6ffb8ffe911f34d40f8fbcf8f1d52c5ddd66706abd4d3bfcd64259f1e8e2371d4f47573b0dc8c28
+  languageName: node
+  linkType: hard
+
+"code-block-writer@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "code-block-writer@npm:12.0.0"
+  checksum: ced73cdc466bff968bba9e8e32340d88420d25a229b9269f7425a10a7c2c9a12ca702dcb601b2462b96472d354f021cf66e552179fcbe30c8f7ecd0173c5fa07
   languageName: node
   linkType: hard
 
@@ -11174,7 +11239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"klona@npm:^2.0.4":
+"klona@npm:^2.0.4, klona@npm:^2.0.6":
   version: 2.0.6
   resolution: "klona@npm:2.0.6"
   checksum: 94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
@@ -11463,12 +11528,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mantine-form-zod-resolver@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "mantine-form-zod-resolver@npm:1.1.0"
+  peerDependencies:
+    "@mantine/form": ">=7.0.0"
+    zod: ">=3.0.0"
+  checksum: 3ff086f2a5d7b9d3d56b09f16fdc27919000c2007279c2e5e6fe85c60c56ee75a13cfebaa1dd341c4ddafd73aba9a3c59a98ea41c59ea8d01c67483dc07ea1ad
+  languageName: node
+  linkType: hard
+
 "mantine-next-template@workspace:.":
   version: 0.0.0-use.local
   resolution: "mantine-next-template@workspace:."
   dependencies:
     "@babel/core": "npm:^7.23.2"
     "@mantine/core": "npm:7.4.0"
+    "@mantine/form": "npm:^7.4.1"
     "@mantine/hooks": "npm:7.4.0"
     "@mantine/notifications": "npm:^7.4.1"
     "@next-auth/prisma-adapter": "npm:^1.0.7"
@@ -11481,6 +11557,8 @@ __metadata:
     "@storybook/nextjs": "npm:^7.5.2"
     "@storybook/react": "npm:^7.5.2"
     "@tabler/icons-react": "npm:^2.40.0"
+    "@tanstack/react-query": "npm:^5.17.10"
+    "@tanstack/react-query-devtools": "npm:^5.17.10"
     "@testing-library/dom": "npm:^9.3.3"
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.0.0"
@@ -11503,6 +11581,7 @@ __metadata:
     eslint-plugin-testing-library: "npm:^6.1.0"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
+    mantine-form-zod-resolver: "npm:^1.1.0"
     next: "npm:14.0.1"
     next-auth: "npm:^4.24.5"
     postcss: "npm:^8.4.31"
@@ -11518,6 +11597,8 @@ __metadata:
     stylelint-config-standard-scss: "npm:^11.1.0"
     ts-jest: "npm:^29.1.1"
     typescript: "npm:5.2.2"
+    zod: "npm:^3.22.4"
+    zod-prisma-types: "npm:^3.1.6"
   languageName: unknown
   linkType: soft
 
@@ -16423,5 +16504,26 @@ __metadata:
   version: 1.0.0
   resolution: "yocto-queue@npm:1.0.0"
   checksum: 856117aa15cf5103d2a2fb173f0ab4acb12b4b4d0ed3ab249fdbbf612e55d1cadfd27a6110940e24746fb0a78cf640b522cc8bca76f30a3b00b66e90cf82abe0
+  languageName: node
+  linkType: hard
+
+"zod-prisma-types@npm:^3.1.6":
+  version: 3.1.6
+  resolution: "zod-prisma-types@npm:3.1.6"
+  dependencies:
+    "@prisma/generator-helper": "npm:^5.5.2"
+    code-block-writer: "npm:^12.0.0"
+    lodash: "npm:^4.17.21"
+    zod: "npm:^3.22.4"
+  bin:
+    zod-prisma-types: dist/bin.js
+  checksum: cef986b25a0c0a081049f7c36d07bc26fe757e43d19aca25b16b71236010f768591e9cc401798e2c1d676e6dccfc303c9c0edef0a407756837c25b6987b8695e
+  languageName: node
+  linkType: hard
+
+"zod@npm:<=3.21.1":
+  version: 3.21.1
+  resolution: "zod@npm:3.21.1"
+  checksum: f089f1b53657fcbfea0888b5b75db2973c619006f8817707369a9332a4916ec6784c2cdb9e3cc03432c8dc815ed3f9bc05631e15829104a1bb1e6feb82f20a20
   languageName: node
   linkType: hard
