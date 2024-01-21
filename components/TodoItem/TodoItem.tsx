@@ -103,10 +103,10 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
           {new Date(todo.updatedAt).toUTCString()}
         </Text>
         <ActionIcon onClick={open} variant="transparent" size="lg" color="gray">
-          <IconEdit size={theme.fontSizes.sm} />
+          <IconEdit />
         </ActionIcon>
         <ActionIcon onClick={handleDelete} variant="transparent" size="lg" color="red">
-          <IconTrash size={theme.fontSizes.sm} />
+          <IconTrash />
         </ActionIcon>
         <Modal opened={opened} onClose={close} title="Edit Todo" centered>
           {/* Modal content */}
