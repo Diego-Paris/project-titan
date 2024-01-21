@@ -30,6 +30,9 @@ import {
   IconCoin,
   IconChevronDown,
 } from '@tabler/icons-react';
+import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/react';
+
 import classes from './HeaderMegaMenu.module.css';
 
 const mockdata = [
@@ -66,6 +69,8 @@ const mockdata = [
 ];
 
 export function HeaderMegaMenu() {
+  const { data: session } = useSession();
+
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const theme = useMantineTheme();
@@ -151,8 +156,7 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group visibleFrom="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+          <Button onClick={() => signIn()}>Sign in</Button>
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -196,8 +200,7 @@ export function HeaderMegaMenu() {
           <Divider my="sm" />
 
           <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button onClick={() => signIn()}>Sign in</Button>
           </Group>
         </ScrollArea>
       </Drawer>
