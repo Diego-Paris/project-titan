@@ -34,6 +34,7 @@ import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import classes from './HeaderMegaMenu.module.css';
+import { UserMenu } from '@/components/UserMenu/UserMenu';
 
 const mockdata = [
   {
@@ -156,7 +157,14 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group visibleFrom="sm">
-          <Button onClick={() => signIn()}>Sign in</Button>
+            {!session && <Button onClick={() => signIn()}>Sign in</Button>}
+            {session && (
+              <Group>
+                <Text>{session?.user?.name}</Text>
+                <Button onClick={() => signOut()}>Sign out</Button>
+                <UserMenu />
+              </Group>
+            )}
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
