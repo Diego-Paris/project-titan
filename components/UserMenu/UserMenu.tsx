@@ -12,15 +12,10 @@ import {
   IconSwitchHorizontal,
   IconChevronDown,
 } from '@tabler/icons-react';
+import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import classes from './UserMenu.module.css';
-
-const user = {
-  name: 'Jane Spoonfighter',
-  email: 'janspoon@fighter.dev',
-  image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png',
-};
 
 export function UserMenu() {
   const { data: session } = useSession();
@@ -44,6 +39,7 @@ export function UserMenu() {
               alt={session?.user?.name || ''}
               radius="xl"
               size={20}
+              no-referrer
             />
             <Text fw={500} size="sm" lh={1} mr={3}>
               {session?.user?.name}
@@ -53,7 +49,7 @@ export function UserMenu() {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-      <Menu.Label>General</Menu.Label>
+        <Menu.Label>General</Menu.Label>
         <Menu.Item
           leftSection={
             <IconFiles
@@ -62,6 +58,8 @@ export function UserMenu() {
               stroke={1.5}
             />
           }
+          component={Link}
+          href="/my-documents"
         >
           My Documents
         </Menu.Item>
@@ -69,6 +67,8 @@ export function UserMenu() {
         <Menu.Label>Settings</Menu.Label>
         <Menu.Item
           leftSection={<IconUser style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
+          component={Link}
+          href="/profile"
         >
           Profile
         </Menu.Item>

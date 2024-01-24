@@ -13,7 +13,7 @@ generator zod {
 }
 
 model Todo {
-  id          String      @id @default(uuid())
+  id          String   @id @default(uuid())
   /// @zod.string.min(3, { message: "Must be at least 3 characters." }).max(20, { message: "Must be at most 20 characters" })
   title       String
   isCompleted Boolean  @default(false)
@@ -21,20 +21,105 @@ model Todo {
   updatedAt   DateTime @updatedAt
 }
 
+model Document {
+  id              String           @id @default(uuid())
+  title           String
+  description     String
+  content         String
+  incidentDate    DateTime
+  isPublic        Boolean          @default(false)
+  isLocked        Boolean          @default(false)
+  ownerId         String
+  owner           Permission       @relation("DocumentOwner", fields: [ownerId], references: [id])
+  timeline        Event[]
+  damages         Damage[]
+  infrastructures Infrastructure[]
+  locations       Location[]
+  authors         Permission[]     @relation("DocumentAuthors")
+  actors          Actor[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([ownerId])
+}
+
+model Actor {
+  id         String    @id @default(uuid())
+  name       String
+  role       String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  Document   Document? @relation(fields: [documentId], references: [id])
+  documentId String?
+
+  @@index([documentId])
+}
+
+model Event {
+  id         String    @id @default(uuid())
+  name       String
+  startDate  DateTime
+  endDate    DateTime
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  Document   Document? @relation(fields: [documentId], references: [id])
+  documentId String?
+
+  @@index([documentId])
+}
+
+model Damage {
+  id        String     @id @default(uuid())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  documents Document[]
+}
+
+model Infrastructure {
+  id        String     @id @default(uuid())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  documents Document[]
+}
+
+model Location {
+  id        String     @id @default(uuid())
+  name      String
+  latitude  Float
+  longitude Float
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  documents Document[]
+}
+
+model Permission {
+  id                String     @id @default(uuid())
+  firstName         String
+  lastName          String
+  email             String
+  isAdmin           Boolean    @default(false)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  ownedDocuments    Document[] @relation("DocumentOwner")
+  authoredDocuments Document[] @relation("DocumentAuthors")
+}
+
 // Needed for NextAuth.js
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

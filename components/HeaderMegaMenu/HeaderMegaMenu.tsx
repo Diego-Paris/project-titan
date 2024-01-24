@@ -29,6 +29,7 @@ import {
   IconFingerprint,
   IconCoin,
   IconChevronDown,
+  IconChartDots3,
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
@@ -98,18 +99,30 @@ export function HeaderMegaMenu() {
     <Box pb={12}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <MantineLogo size={30} />
-
+          <Anchor href="/" component={Link} className={classes.linklogo}>
+            <Group h="100%" gap={10}>
+              <IconChartDots3 size={30} color={theme.colors.orange[5]} stroke={2.5} />
+              <Text size="xl" fw={650} c="white">
+                IReNE
+              </Text>
+            </Group>
+          </Anchor>
           <Group h="100%" gap={0} visibleFrom="sm">
             <Anchor href="/" component={Link} className={classes.link}>
               Home
             </Anchor>
-            <a href="#" className={classes.link}>
-              Learn
-            </a>
-            <a href="#" className={classes.link}>
-              Academy
-            </a>
+            <Anchor href="/browse" component={Link} className={classes.link}>
+              Browse
+            </Anchor>
+            <Anchor href="/timeline" component={Link} className={classes.link}>
+              Timeline
+            </Anchor>
+            <Anchor href="/plots" component={Link} className={classes.link}>
+              Plots
+            </Anchor>
+            <Anchor href="/map" component={Link} className={classes.link}>
+              Map
+            </Anchor>
           </Group>
 
           <Group visibleFrom="sm">
