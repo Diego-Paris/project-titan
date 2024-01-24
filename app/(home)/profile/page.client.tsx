@@ -9,7 +9,7 @@ export function ProfileClient(): ReactElement {
     <>
       <Space h="lg" />
       <Container>
-        <Title order={1}>My profile</Title>
+        <Title order={1}>Profile</Title>
         <Space h="md" />
         <Box
           style={{
