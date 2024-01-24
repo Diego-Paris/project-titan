@@ -12,7 +12,7 @@ interface LoginClientProps {
 
 export function LoginClient({ providers }: LoginClientProps): ReactElement {
   return (
-    <Box style={{ backgroundColor: '#445963', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Box style={{ backgroundColor: '#526578', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Center style={{ width: '100%' }}>
         <AuthenticationTitle providers={providers} />
       </Center>
