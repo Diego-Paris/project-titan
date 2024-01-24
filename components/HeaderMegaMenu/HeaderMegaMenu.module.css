@@ -3,6 +3,8 @@
   padding-left: var(--mantine-spacing-md);
   padding-right: var(--mantine-spacing-md);
   border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background-color: #526578; /* This sets the background color */
+  color: #FFF; /* You might want to change the text color for better contrast */
 }
 
 .link {
@@ -12,7 +14,7 @@
   padding-left: var(--mantine-spacing-md);
   padding-right: var(--mantine-spacing-md);
   text-decoration: none;
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: light-dark(var(--mantine-color-white), var(--mantine-color-white));
   font-weight: 500;
   font-size: var(--mantine-font-size-sm);
 
@@ -22,7 +24,7 @@
   }
 
   @mixin hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    background-color: light-dark(#495a6c, var(--mantine-color-dark-6));
   }
 }
 

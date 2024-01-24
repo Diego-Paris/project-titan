@@ -102,7 +102,7 @@ export function HeaderMegaMenu() {
           <Anchor href="/" component={Link} className={classes.linklogo}>
             <Group h="100%" gap={10}>
               <IconChartDots3 size={30} color={theme.colors.orange[5]} stroke={2.5} />
-              <Text size="xl" fw={650}>
+              <Text size="xl" fw={650} c="white">
                 IReNE
               </Text>
             </Group>
