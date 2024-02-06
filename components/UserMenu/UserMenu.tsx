@@ -39,7 +39,7 @@ export function UserMenu() {
               alt={session?.user?.name || ''}
               radius="xl"
               size={20}
-              no-referrer
+              imageProps={{ referrerPolicy: 'no-referrer' }}
             />
             <Text fw={500} size="sm" lh={1} mr={3}>
               {session?.user?.name}
