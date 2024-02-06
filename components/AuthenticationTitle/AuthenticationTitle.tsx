@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  useMantineTheme,
   TextInput,
   PasswordInput,
   Checkbox,
@@ -12,10 +13,11 @@ import {
   Group,
   Button,
   Center,
+  Space,
 } from '@mantine/core';
 import { ClientSafeProvider, signIn } from 'next-auth/react';
 import Image from 'next/image';
-
+import { IconPigMoney } from '@tabler/icons-react';
 import classes from './AuthenticationTitle.module.css';
 
 interface LoginClientProps {
@@ -23,15 +25,19 @@ interface LoginClientProps {
 }
 
 export function AuthenticationTitle({ providers }: LoginClientProps) {
+  const theme = useMantineTheme(); // Access the theme
+
   return (
     <>
       <Container size={720}>
         <Paper withBorder shadow="md" p={30} mt={0} radius="md">
           <Title className={classes.title} ta="center" order={2}>
-            Interdisciplinary Research Network Extension
+            Finovatek Solutions Dashboard
           </Title>
+          <Space h="md" />
           <Center>
-            <Image src="/irene-fab5-logo.png" alt="Example Image" width={200} height={200} />
+            {/* Replace Image with IconPiggyBank */}
+            <IconPigMoney size={200} stroke={1.5} color={theme.colors.lime[6]} />
           </Center>
           {providers &&
             Object.values(providers).map((provider) => (
@@ -41,12 +47,12 @@ export function AuthenticationTitle({ providers }: LoginClientProps) {
                     <Button
                       w="70%"
                       mt="xl"
-                      color="#3B7C84"
+                      color={theme.colors.teal[6]}
                       onClick={() => {
                         signIn(provider.id, { callbackUrl: '/' });
                       }}
                     >
-                      <Text>Sign in with your UPR account</Text>
+                      Sign in with your Google Account
                     </Button>
                   </Center>
                 )}
