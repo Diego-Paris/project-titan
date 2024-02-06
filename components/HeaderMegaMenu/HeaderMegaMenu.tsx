@@ -119,7 +119,11 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group visibleFrom="sm">
-            {!session && <Button onClick={() => signIn()}>Sign in</Button>}
+            {!session && (
+              <Button color={theme.colors.green[6]} onClick={() => signIn()}>
+                Sign in
+              </Button>
+            )}
             {session && (
               <Group>
                 <UserMenu />
