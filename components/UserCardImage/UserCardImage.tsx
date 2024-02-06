@@ -40,7 +40,7 @@ export function UserCardImage() {
         mt={-30}
         variant="filled"
         className={classes.avatar}
-        no-referrer
+        imageProps={{ referrerPolicy: 'no-referrer' }}
       />
       <Text ta="center" fz="lg" fw={500} mt="sm">
         {session?.user?.name}
